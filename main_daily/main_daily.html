@@ -2,41 +2,707 @@
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
-</html>
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">
   <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
 
+  <link rel="stylesheet" href="style.css">
   <title>Mail Daily</title>
-  <!-- <style type="text/css">
-    @media screen and (max-width: 630px) {}
-  </style> -->
-
 
 </head>
+<style>
+  /* GENERAL STYLING */
+  body,
+  table,
+  td,
+  table td,
+  img {
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+  }
 
-<body style="background: #ffffff; padding:0; margin:0">
+  /* YAHOO STRIPS THE INLINE STYLING OF THE BODY TAG, SO THIS IS A FALLBACK */
+  body {
+    background: #ffffff;
+  }
+
+  /*ALLOWS TEXT WRAPPING, CONTROLS LINE HEIGHT, AND PREVENTS ADDED BORDERS IN OUTLOOK */
+  body,
+  table,
+  td,
+  table td {
+    mso-line-height-rule: exactly;
+    mso-table-lspace: 0;
+    mso-table-rspace: 0;
+    border-collapse: collapse;
+  }
+
+  /* OUTLOOK.COM FIXES. OUTLOOK.COM AUTOMATICALLY ADDS A CLASS OF "ExternalClass" TO YOUR BODY TAG, WHICH IS WHY THESE WORK */
+  /*RESETS OUTLOOK.COM LINE HEIGHT TO 100% INSTEAD OF ITS DEFAULT OF 131% */
+  .ExternalClass * {
+    line-height: 100%;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 639px) {
+
+    /*------------MOBILE HIDE AND SHOW---------------*/
+    .mobileHide {
+      display: none !important;
+      height: 0px !important;
+      width: 0px !important;
+      max-height: 0px !important;
+      max-width: 0px !important;
+      font-size: 0px !important;
+      line-height: 0px !important;
+    }
+
+    .mobileShow {
+      display: block !important;
+      height: auto !important;
+      width: auto !important;
+      max-height: none !important;
+      max-width: none !important;
+      font-size: 10px !important;
+      line-height: 10px !important;
+    }
+
+    .mobileChange {
+      display: flex !important;
+      justify-content: space-between;
+      height: auto !important;
+      width: auto !important;
+      max-height: none !important;
+      max-width: none !important;
+      font-size: 13px !important;
+      line-height: 15px !important;
+    }
+
+    /*-------------ALIGNMENT-------------------------*/
+    .block {
+      display: block !important;
+    }
+
+    .inlineBlock {
+      display: inline-block !important;
+    }
+
+    .centerBlock {
+      margin: 0px auto !important;
+      float: none !important;
+    }
+
+    .centerText {
+      text-align: center !important;
+    }
+
+    .leftText {
+      text-align: left !important;
+    }
+
+    .rightText {
+      text-align: right !important;
+    }
+
+    /*---------HEIGHT----------*/
+    .heightAuto {
+      height: auto !important;
+    }
+
+    .height25 {
+      height: 25px !important;
+    }
+
+    /*---------WIDTH----------*/
+    .maxWidth480 {
+      max-width: 480px !important;
+    }
+
+    .widthAuto {
+      width: auto !important;
+    }
+
+    .widthFull {
+      width: 100% !important;
+      min-width: inherit !important;
+      height: auto !important;
+    }
+
+    .width320 {
+      width: 320px !important;
+      min-width: inherit !important;
+    }
+
+    .width318 {
+      width: 318px !important;
+    }
+
+    .width310 {
+      width: 310px !important;
+    }
+
+    .width300 {
+      width: 300px !important;
+    }
+
+    .width298 {
+      width: 298px !important;
+    }
+
+    .width290 {
+      width: 290px !important;
+    }
+
+    .width280 {
+      width: 280px !important;
+    }
+
+    .width278 {
+      width: 278px !important;
+    }
+
+    .width270 {
+      width: 270px !important;
+    }
+
+    .width260 {
+      width: 260px !important;
+    }
+
+    .width250 {
+      width: 250px !important;
+    }
+
+    .width240 {
+      width: 240px !important;
+    }
+
+    .width230 {
+      width: 230px !important;
+    }
+
+    .width220 {
+      width: 220px !important;
+    }
+
+    .width210 {
+      width: 210px !important;
+    }
+
+    .width200 {
+      width: 200px !important;
+    }
+
+    .width190 {
+      width: 190px !important;
+    }
+
+    .width180 {
+      width: 180px !important;
+    }
+
+    .width170 {
+      width: 170px !important;
+    }
+
+    .width160 {
+      width: 160px !important;
+    }
+
+    .width150 {
+      width: 150px !important;
+    }
+
+    .width140 {
+      width: 140px !important;
+    }
+
+    .width130 {
+      width: 130px !important;
+    }
+
+    .width120 {
+      width: 120px !important;
+    }
+
+    .width110 {
+      width: 110px !important;
+    }
+
+    .width100 {
+      width: 100px !important;
+    }
+
+    .width90 {
+      width: 90px !important;
+    }
+
+    .width80 {
+      width: 80px !important;
+    }
+
+    .width70 {
+      width: 70px !important;
+    }
+
+    .width60 {
+      width: 60px !important;
+    }
+
+    .width50 {
+      width: 50px !important;
+    }
+
+    .width40 {
+      width: 40px !important;
+    }
+
+    .width30 {
+      width: 30px !important;
+    }
+
+    .width20 {
+      width: 20px !important;
+    }
+
+    .width10 {
+      width: 10px !important;
+    }
+
+    .width5 {
+      width: 5px !important;
+    }
+
+    /*---------PADDING----------*/
+    .clearPadding {
+      padding: 0px !important
+    }
+
+    .clearLeftPadding {
+      padding-left: 0px !important;
+    }
+
+    .clearRightPadding {
+      padding-right: 0px !important;
+    }
+
+    .clearTopPadding {
+      padding-top: 0px !important;
+    }
+
+    .clearBottomPadding {
+      padding-bottom: 0px !important;
+    }
+
+    .paddingBottom12 {
+      padding-bottom: 12px !important;
+    }
+
+    .paddingTop12 {
+      padding-top: 12px !important;
+    }
+
+    .padding50 {
+      padding: 50px !important;
+    }
+
+    .padding40 {
+      padding: 40px !important;
+    }
+
+    .padding30 {
+      padding: 30px !important;
+    }
+
+    .padding16 {
+      padding: 16px !important;
+    }
+
+    .padding19 {
+      padding: 19px !important;
+    }
+
+    .padding15 {
+      padding: 15px !important;
+    }
+
+    .padding10 {
+      padding: 10px !important;
+    }
+
+    .padding9 {
+      padding: 9px !important;
+    }
+
+    .padding5 {
+      padding: 5px !important;
+    }
+
+    .paddingLeft100 {
+      padding-left: 100px !important;
+    }
+
+    .paddingLeft90 {
+      padding-left: 90px !important;
+    }
+
+    .paddingLeft80 {
+      padding-left: 80px !important;
+    }
+
+    .paddingLeft70 {
+      padding-left: 70px !important;
+    }
+
+    .paddingLeft60 {
+      padding-left: 60px !important;
+    }
+
+    .paddingLeft50 {
+      padding-left: 50px !important;
+    }
+
+    .paddingLeft40 {
+      padding-left: 40px !important;
+    }
+
+    .paddingLeft30 {
+      padding-left: 30px !important;
+    }
+
+    .paddingLeft20 {
+      padding-left: 20px !important;
+    }
+
+    .paddingLeft10 {
+      padding-left: 10px !important;
+    }
+
+    .paddingLeft5 {
+      padding-left: 5px !important;
+    }
+
+    .paddingRight100 {
+      padding-right: 100px !important;
+    }
+
+    .paddingRight90 {
+      padding-right: 90px !important;
+    }
+
+    .paddingRight80 {
+      padding-right: 80px !important;
+    }
+
+    .paddingRight70 {
+      padding-right: 70px !important;
+    }
+
+    .paddingRight60 {
+      padding-right: 60px !important;
+    }
+
+    .paddingRight50 {
+      padding-right: 50px !important;
+    }
+
+    .paddingRight40 {
+      padding-right: 40px !important;
+    }
+
+    .paddingRight30 {
+      padding-right: 30px !important;
+    }
+
+    .paddingRight20 {
+      padding-right: 20px !important;
+    }
+
+    .paddingRight10 {
+      padding-right: 10px !important;
+    }
+
+    .paddingRight5 {
+      padding-right: 5px !important;
+    }
+
+    .paddingBottom100 {
+      padding-bottom: 100px !important;
+    }
+
+    .paddingBottom90 {
+      padding-bottom: 90px !important;
+    }
+
+    .paddingBottom80 {
+      padding-bottom: 80px !important;
+    }
+
+    .paddingBottom70 {
+      padding-bottom: 70px !important;
+    }
+
+    .paddingBottom60 {
+      padding-bottom: 60px !important;
+    }
+
+    .paddingBottom50 {
+      padding-bottom: 50px !important;
+    }
+
+    .paddingBottom40 {
+      padding-bottom: 40px !important;
+    }
+
+    .paddingBottom30 {
+      padding-bottom: 30px !important;
+    }
+
+    .paddingBottom20 {
+      padding-bottom: 20px !important;
+    }
+
+    .paddingBottom10 {
+      padding-bottom: 10px !important;
+    }
+
+    .paddingBottom5 {
+      padding-bottom: 5px !important;
+    }
+
+    .paddingTop100 {
+      padding-top: 100px !important;
+    }
+
+    .paddingTop90 {
+      padding-top: 90px !important;
+    }
+
+    .paddingTop80 {
+      padding-top: 80px !important;
+    }
+
+    .paddingTop70 {
+      padding-top: 70px !important;
+    }
+
+    .paddingTop60 {
+      padding-top: 60px !important;
+    }
+
+    .paddingTop50 {
+      padding-top: 50px !important;
+    }
+
+    .paddingTop40 {
+      padding-top: 40px !important;
+    }
+
+    .paddingTop30 {
+      padding-top: 30px !important;
+    }
+
+    .paddingTop20 {
+      padding-top: 20px !important;
+    }
+
+    .paddingTop10 {
+      padding-top: 10px !important;
+    }
+
+    .paddingTop5 {
+      padding-top: 5px !important;
+    }
+
+    /*---------BORDERS----------*/
+    .clearBorders {
+      border: none !important;
+    }
+
+    .clearLeftBorder {
+      border-left: none !important;
+    }
+
+    .clearRightBorder {
+      border-right: none !important;
+    }
+
+    .clearTopBorder {
+      border-top: none !important;
+    }
+
+    .clearBottomBorder {
+      border-bottom: none !important;
+    }
+
+    .leftBorder {
+      border-left: 1px solid #cccccc !important;
+    }
+
+    .rightBorder {
+      border-right: 1px solid #cccccc !important;
+    }
+
+    .topBorder {
+      border-top: 1px solid #cccccc !important;
+    }
+
+    .bottomBorder {
+      border-bottom: 1px solid #cccccc !important;
+    }
+
+    /*---------FONT SIZES----------*/
+    .font40 {
+      font-size: 40px !important;
+      line-height: 52px !important;
+    }
+
+    .font35 {
+      font-size: 35px !important;
+      line-height: 44px !important;
+    }
+
+    .font30 {
+      font-size: 30px !important;
+      line-height: 38px !important;
+    }
+
+    .font25 {
+      font-size: 25px !important;
+      line-height: 32px !important;
+    }
+
+    .font20 {
+      font-size: 20px !important;
+      line-height: 26px !important;
+    }
+
+    .font18 {
+      font-size: 18px !important;
+      line-height: 22px !important;
+    }
+
+    .font17 {
+      font-size: 17px !important;
+      line-height: 21px !important;
+    }
+
+    .font16 {
+      font-size: 16px !important;
+      line-height: 20px !important;
+    }
+
+    .font15 {
+      font-size: 15px !important;
+      line-height: 19px !important;
+    }
+
+    .font14 {
+      font-size: 14px !important;
+      line-height: 18px !important;
+    }
+
+    .font13 {
+      font-size: 13px !important;
+      line-height: 17px !important;
+    }
+
+    .font12 {
+      font-size: 12px !important;
+      line-height: 16px !important;
+    }
+
+    .font11 {
+      font-size: 11px !important;
+      line-height: 14px !important;
+    }
+
+    .font10 {
+      font-size: 10px !important;
+      line-height: 13px !important;
+    }
+
+    .mobileHeadline {
+      font-size: 23px !important;
+    }
+
+    .mobileDek {
+      font-size: 17px !important;
+      line-height: 24px !important;
+    }
+
+    .mobileAdContent {
+      text-align: center !important;
+      font-family: Arial, sans-serif;
+      font-size: 12px !important;
+      line-height: 16px !important;
+      color: #9b9b9b !important;
+      font-weight: 700 !important;
+    }
+
+    .mobileTitle {
+      font-size: 23px !important;
+      line-height: 27px !important;
+    }
+
+    .mobileEventsText {
+      font-size: 17px !important;
+      line-height: 24px !important;
+    }
+
+    .mobileEventsTitle {
+      font-size: 20px !important;
+      line-height: 28px !important;
+    }
+
+    .mobileSeminarDate {
+      font-size: 16px !important;
+      line-height: 20px !important;
+    }
+  }
+</style>
+
+<!-- FOR OUTLOOK DPI SCALING -->
+<!--[if gte mso 9]>
+<xml>
+    <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+
+<!-- BACKUP FONTS FOR OUTLOOK -->
+<!--[if mso]>
+   <style type="text/css">
+      body, table, td {font-family: Arial, Helvetica, sans-serif !important; v-text-align:left;}
+   </style>
+<![endif]-->
+
+<body style="background: #ffffff; padding:0px; margin:0px">
 
   <!-- 100% width wrapper table -->
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <table style="background: #ffffff;" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td align="center" style="background: #ffffff; padding: 20px 10px;">
+      <td class="paddingLeft10 paddingRight10" align="center" style="background: #ffffff;">
         <!-- fixed wrapper table -->
-        <table width="640" align="center" border="0" cellspacing="0" cellpadding="0">
+        <table class="widthFull maxWidth480" style="table-layout: fixed; min-width: 640px; width: 640px;" width="640"
+          align="center" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td align="left">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <!-- top bar -->
                 <tr>
-                  <td style="padding: 16px 0px; border-bottom: 4px solid #e3e3e3;">
+                  <td style="padding: 16px 0px; border-bottom: 4px solid #e3e3e3;" valign="top">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td>
                           <!-- startup investment -->
-                          <table width="300" align="left" border="0" cellspacing="0" cellpadding="0">
+                          <table class="mobileHide" width="300" align="left" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                               <td
                                 style="text-align: left; font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; color: #666666; font-weight: 400;">
@@ -45,17 +711,27 @@
                               </td>
                             </tr>
                           </table>
-                          <!-- view in browser -->
-                          <table width="200" align="right" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td
-                                style="padding: 15px 0px 0px 0px; text-align: right; font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; color: #666666; font-weight: 400;">
-                                <a href="#" target="_blank"
-                                  style="color: #666666; text-decoration: underline;">Unsubscribe</a>
-                                &nbsp;&nbsp;&bull;&nbsp;&nbsp; <a href="#" target="_blank"
-                                  style="color: #666666; text-decoration: underline;">View in browser</a>
-                              </td>
-                            </tr>
+                          <!-- unsubscribe & view in browser -->
+                          <table class="widthFull" width="200" style="width: 200px;" align="right" border="0"
+                            cellspacing="0" cellpadding="0">
+                            <tbody>
+                              <tr>
+                                <td class="mobileHide"
+                                  style="padding: 15px 0px 0px 0px; text-align: right; font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; color: #666666; font-weight: 400;">
+                                  <a href="#" target="_blank"
+                                    style="color: #666666; text-decoration: underline;">Unsubscribe</a>
+                                  &nbsp;&nbsp;&bull;&nbsp;&nbsp; <a href="#" target="_blank"
+                                    style="color: #666666; text-decoration: underline;">View in browser</a>
+                                </td>
+                                <td class="mobileChange"
+                                  style="display: none; font-family: Arial, sans-serif; color: #666666; font-weight: 400;">
+                                  <a href="#" target="_blank"
+                                    style="color: #666666; text-decoration: underline;">Unsubscribe</a>
+                                  <a href="#" target="_blank" style="color: #666666; text-decoration: underline;">View
+                                    in browser</a>
+                                </td>
+                              </tr>
+                            </tbody>
                           </table>
                         </td>
                       </tr>
@@ -69,7 +745,7 @@
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tbody>
                         <tr>
-                          <td style="background: #ffffff;">
+                          <td class="bottomBorder" style="background: #ffffff;">
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tbody>
                                 <!-- LOGO, LINKS -->
@@ -80,8 +756,8 @@
                                       cellspacing="0" cellpadding="0">
                                       <tbody>
                                         <tr>
-                                          <td class="paddingBottom20" align="center">
-                                            <a href="" target="_blank"><img class="width170 heightAuto"
+                                          <td align="center">
+                                            <a href="" target="_blank"><img class="height25"
                                                 src="https://a.icons8.com/ehdU0Xjf/Bx8Gc7/accountingtoday_bran.png"
                                                 style="width: auto; height: 30px;" height="30" width="auto"
                                                 alt="brand_logo" border="0" align="center" /></a>
@@ -90,11 +766,10 @@
                                       </tbody>
                                     </table>
                                     <!-- LINKS -->
-                                    <table class="width260 centerBlock" align="right" border="0" cellspacing="0"
-                                      cellpadding="0">
+                                    <table class="mobileHide" align="right" border="0" cellspacing="0" cellpadding="0">
                                       <tbody>
                                         <tr>
-                                          <td class="centerText"
+                                          <td
                                             style="padding: 5px 0px; text-align: right; font-family: Arial, sans-serif; font-size: 13px; line-height: 15px; color: #666666; font-weight: 400;">
                                             <a href="" target="_blank"
                                               style="color: #666666; text-decoration: none;">Upcoming Events</a>
@@ -112,7 +787,7 @@
                                       cellspacing="0" cellpadding="0">
                                       <tbody>
                                         <tr>
-                                          <td class="centerText paddingBottom10"
+                                          <td class="centerText paddingBottom12 font16"
                                             style="text-align: left; font-family:  Arial, sans-serif; font-size: 24px; line-height: 26px; color: #000000; font-weight: 700;">
                                             DAILY BRIEFING
                                           </td>
@@ -120,12 +795,50 @@
                                       </tbody>
                                     </table>
                                     <!-- DATE-->
-                                    <table class="widthFull" align="right" width="200" style="width: 200px;" border="0"
+                                    <table class="mobileHide" align="right" width="200" style="width: 200px;" border="0"
                                       cellspacing="0" cellpadding="0">
                                       <tbody>
                                         <tr>
                                           <td class="centerText clearTopPadding"
                                             style="padding: 4px 0px 0px 0px; text-align: right; font-family: Arial, sans-serif; font-size: 13px; line-height: 15px; color: #9B9B9B; font-weight: 400;">
+                                            <a href="#"
+                                              style="color: #9B9B9B; text-decoration: none; cursor: default;">Month dd,
+                                              yyyy</a>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="mobileShow" style="display: none;">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tbody>
+                                <!-- Events & Date -->
+                                <tr>
+                                  <td>
+                                    <!-- Events -->
+                                    <table align="left" border="0" cellspacing="0" cellpadding="0">
+                                      <tbody>
+                                        <tr>
+                                          <td class="paddingTop12"
+                                            style="font-family: Arial, sans-serif; font-size: 13px; line-height: 15px; color: #666666; font-weight: 400;">
+                                            <a href="" target="_blank"
+                                              style="color: #666666; text-decoration: none;">Upcoming Events</a>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                    <!-- DATE-->
+                                    <table align="right" border="0" cellspacing="0" cellpadding="0">
+                                      <tbody>
+                                        <tr>
+                                          <td class="paddingTop12"
+                                            style="font-family: Arial, sans-serif; font-size: 13px; line-height: 15px; color: #9B9B9B; font-weight: 400;">
                                             <a href="#"
                                               style="color: #9B9B9B; text-decoration: none; cursor: default;">Month dd,
                                               yyyy</a>
@@ -151,14 +864,15 @@
                       <tbody>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
-                            style="padding: 20px 80px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
-                            Startup investment bank seeks to become one-stop shop for crypto
+                          <td class="mobileHeadline"
+                            style="padding: 20px 0px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
+                            Startup investment bank seeks to become
+                            one-stop shop for crypto
                           </td>
                         </tr>
                         <!-- BYLINE -->
                         <tr>
-                          <td align="left" style="padding: 12px 0px 12px 0px;">
+                          <td align="left" style="padding: 0px 0px 12px 0px;">
                             <table border="0" cellspacing="0" cellpadding="0">
                               <tbody>
                                 <tr>
@@ -179,7 +893,7 @@
                         </tr>
                         <!-- Dek -->
                         <tr>
-                          <td
+                          <td class="mobileDek"
                             style="padding: 0px 0px 22px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 18px; line-height: 26px; color: #333333; font-weight: 400;">
                             Fincross, based on the island of Mauritius, is launching a regulated investment bank for
                             digital assets. It faces tough competition.
@@ -206,7 +920,25 @@
                     </table>
                   </td>
                 </tr>
+                <!-- MOBILE AD1 -->
+                <tr>
+                  <td class="mobileShow paddingTop30 paddingBottom30 bottomBorder"
+                    style="display:none; line-height: 0px; font-size: 0px; width: 0px; height: 0px;">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody>
+                        <tr>
+                          <td class="mobileShow"
+                            style="display:none; line-height: 0px; font-size: 0px; width: 0px; height: 0px;">
+                            <a href="#" target="_blank"><img class="mobileShow centerBlock width300 heightAuto"
+                                src="https://a.icons8.com/ehdU0Xjf/Xmwxrd/ad_300-x-250.png" alt=""
+                                style="display:none; line-height: 0px; font-size: 0px; width: 0px; height: 0px;" /></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
 
+                  </td>
+                </tr>
                 <!-- Desktop Ad1 -->
                 <tr>
                   <td class="mobileHide">
@@ -231,7 +963,7 @@
                       <tbody>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileHeadline"
                             style="padding: 20px 0px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
                             CFPB's payday rule rollback sows confusion
                           </td>
@@ -295,7 +1027,7 @@
                       <tbody>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileHeadline"
                             style="padding: 20px 10px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
                             FDIC crackdown on brokered deposits goes too far: ABA report
                           </td>
@@ -358,7 +1090,7 @@
                       <tbody>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileHeadline"
                             style="padding: 20px 0px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
                             Will banks turn the tables and buy credit unions?
                           </td>
@@ -414,13 +1146,13 @@
                   </td>
                 </tr>
 
-                <!-- Desktop Ad2 -->
+                <!-- Desktop / Mobile Ad2 -->
                 <tr>
-                  <td class="mobileHide">
+                  <td>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tbody>
                         <tr>
-                          <td class="mobileHide" style="padding: 30px 0px; border-bottom: 1px solid #cccccc; ">
+                          <td style="padding: 30px 0px; border-bottom: 1px solid #cccccc; ">
                             <a href="#" target="_blank"><img class="widthFull heightAuto"
                                 src="https://a.icons8.com/ehdU0Xjf/txq3Xv/ad_unit_02.png" width="640" height="auto"
                                 style="display: block; width: 640px; height: auto;" border="0" alt="desktop_ad_2" /></a>
@@ -438,7 +1170,7 @@
                       <tbody>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileHeadline"
                             style="padding: 20px 0px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
                             Warren doubles down on ending &lsquo;too big to jail&rsquo;
                           </td>
@@ -502,7 +1234,7 @@
                       <tbody>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileHeadline"
                             style="padding: 20px 0px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
                             Is this the pot-banking fix?
                           </td>
@@ -573,7 +1305,7 @@
                         </tr>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileHeadline"
                             style="padding: 16px 0px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
                             Cross-border digital compliance in the cloud
                           </td>
@@ -614,7 +1346,7 @@
                       <tbody>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileHeadline"
                             style="padding: 20px 0px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
                             &lsquo;There is no division in our industry&rsquo;: BofA&rsquo;s Moynihan
                           </td>
@@ -677,7 +1409,7 @@
                       <tbody>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileHeadline"
                             style="padding: 20px 0px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
                             OCC and FDIC chiefs signal progress on CRA reform
                           </td>
@@ -748,7 +1480,7 @@
                         </tr>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileHeadline"
                             style="padding: 16px 0px 12px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: bold;">
                             Onboarding customers while mitigating fraud
                           </td>
@@ -857,14 +1589,14 @@
                               <tbody>
                                 <!-- TITLE -->
                                 <tr>
-                                  <td
+                                  <td class="mobileTitle"
                                     style="padding: 0px 0px 15px 0px; text-align: left; font-family:  Arial, sans-serif; font-size: 26px; line-height: 30px; color: #333333; font-weight: 700;">
                                     Dig|In
                                   </td>
                                 </tr>
                                 <tr>
                                   <td
-                                    style="padding: 0px 0px 16px 0px; text-align: left; font-family:  Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 700;">
+                                    style="padding: 0px 0px 16px 0px; text-align: left; font-family:  Arial, sans-serif; font-size: 18px; line-height: 22px; color: #999999; font-weight: 700;">
                                     <a href="#" style="color: #333333; text-decoration: none; cursor: default;">May
                                       29-31, 2019 | Austin, TX</a>
                                   </td>
@@ -877,7 +1609,7 @@
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td class="paddingBottom20"
+                                  <td class="paddingBottom30 mobileEventsText"
                                     style="padding: 16px 0px 0px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 18px; line-height: 26px; color: #333333; font-weight: 400;">
                                     Only 30 tickets are left at the advanced rates! Lock in the early bird discount.
                                     Join Digital Insurance at this innovative, industry-leading event built to showcase
@@ -905,7 +1637,7 @@
                                       <tbody>
                                         <!-- EVENT NAME -->
                                         <tr>
-                                          <td
+                                          <td class="mobileEventsTitle"
                                             style="padding: 0px 0px 10px 0px; text-align: left; font-family:  Arial, sans-serif; font-size: 20px; line-height: 24px; color: #333333; font-weight: 700;">
                                             <a href="#" target="_blank" style="color: #333333; text-decoration: none;">
                                               Midwest Municipal Market &rarr;</a>
@@ -926,7 +1658,7 @@
                                       <tbody>
                                         <!-- EVENT NAME -->
                                         <tr>
-                                          <td
+                                          <td class="mobileEventsTitle"
                                             style="padding: 0px 0px 10px 0px; text-align: left; font-family:  Arial, sans-serif; font-size: 20px; line-height: 24px; color: #333333; font-weight: 700;">
                                             <a href="#" target="_blank" style="color: #333333; text-decoration: none;">
                                               Digital Banking &rarr;</a>
@@ -947,7 +1679,7 @@
                                       <tbody>
                                         <!-- EVENT NAME -->
                                         <tr>
-                                          <td
+                                          <td class="mobileEventsTitle"
                                             style="padding: 0px 0px 5px 0px; text-align: left; font-family:  Arial, sans-serif; font-size: 20px; line-height: 24px; color: #333333; font-weight: 700;">
                                             <a href="#" target="_blank" style="color: #333333; text-decoration: none;">
                                               In|Vest&rarr;</a>
@@ -983,7 +1715,7 @@
                                         </tr>
                                         <!-- DATE -->
                                         <tr>
-                                          <td
+                                          <td class="mobileSeminarDate"
                                             style="text-align: left; font-family:  Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 400;">
                                             <a href="#" style="color: #333333; text-decoration: none; cursor: default;">
                                               May 02, 2019</a>
@@ -1011,7 +1743,8 @@
 
                 <!-- Resources -->
                 <tr>
-                  <td style="padding: 30px 0px 30px 0px; border-bottom: 4px solid #cccccc;">
+                  <td class="paddingLeft10 paddingRight10"
+                    style="padding: 30px 0px 30px 0px; border-bottom: 4px solid #cccccc;">
                     <!-- R1 -->
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tbody>
@@ -1025,7 +1758,7 @@
                         <!-- TYPE -->
                         <tr>
                           <td
-                            style="padding: 0px 0px 5px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; color: #666666; font-weight: 700;">
+                            style="padding: 0px 0px 5px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; color: #666666; font-weight: 400;">
                             WHITEPAPER
                           </td>
                         </tr>
@@ -1076,7 +1809,7 @@
                         </tr>
                         <!-- HEADLINE -->
                         <tr>
-                          <td
+                          <td class="mobileListSnippets"
                             style="padding: 0px 0px 26px 0px; text-align: left; font-family: Arial, sans-serif; font-size: 20px; line-height: 26px; color: #333333; font-weight: 700;">
                             <a href="#" target="_blank" style="color: #333333; text-decoration: none;">
                               Preparing for Peer Review &mdash; how to avoid missteps &rarr;</a>
@@ -1112,7 +1845,7 @@
 
                 <!-- DATA -->
                 <tr>
-                  <td style="padding: 30px 0px 30px 0px; border-bottom: 4px solid #e3e3e3;">
+                  <td class="paddingLeft10 paddingRight10" style="padding: 30px 0px; border-bottom: 4px solid #e3e3e3;">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tbody>
                         <!-- TITLE -->
@@ -1160,20 +1893,19 @@
                         <tr>
                           <td class="mobileHide">
                             <a href="#" target="_blank"><img class="widthFull heightAuto"
-                                src="https://a.icons8.com/ehdU0Xjf/Ki6LZ5/ad_unit_03.png" width="640"
-                                height="auto" style="display: block; width: 640px; height: auto;" border="0"
-                                alt="" /></a>
+                                src="https://a.icons8.com/ehdU0Xjf/Ki6LZ5/ad_unit_03.png" width="640" height="auto"
+                                style="display: block; width: 640px; height: auto;" border="0" alt="" /></a>
                           </td>
                         </tr>
                         <!--MOBILE AD-->
-                        <!-- <tr>
+                        <tr>
                           <td class="mobileShow"
                             style="display:none; line-height: 0px; font-size: 0px; width: 0px; height: 0px;">
                             <a href="#" target="_blank"><img class="mobileShow centerBlock width260 heightAuto"
-                                src="http://www.placehold.it/300x260/cccccc&text=MOBILE-AD" alt=""
+                                src="https://a.icons8.com/ehdU0Xjf/ujOV3R/mobile_ad_unit_03-co.png" alt=""
                                 style="display:none; line-height: 0px; font-size: 0px; width: 0px; height: 0px;" /></a>
                           </td>
-                        </tr> -->
+                        </tr>
                       </tbody>
                     </table>
                   </td>
@@ -1256,9 +1988,7 @@
                     </table>
                   </td>
                 </tr>
-
               </table>
-
             </td>
           </tr>
         </table>
